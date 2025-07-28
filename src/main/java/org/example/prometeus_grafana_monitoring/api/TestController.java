@@ -14,6 +14,18 @@ public class TestController {
         return "test";
     }
 
+    @GetMapping("/slow-5")
+    public String slowApi5() throws InterruptedException {
+        Thread.sleep(5000);
+        return "slow-5-second";
+    }
+
+    @GetMapping("/slow-10")
+    public String slowApi10() throws InterruptedException {
+        Thread.sleep(10000);
+        return "slow-10-second";
+    }
+
     @GetMapping("/runtime-excpetion")
     public String runtimeException(){
         throw new RuntimeException("런타임 예외 발생");
