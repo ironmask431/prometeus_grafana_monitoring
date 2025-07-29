@@ -14,16 +14,16 @@ public class TestController {
         return "test";
     }
 
-    @GetMapping("/slow-5")
+    @GetMapping("/slow-2")
     public String slowApi5() throws InterruptedException {
         Thread.sleep(5000);
-        return "slow-5-second";
+        return "slow-1-second";
     }
 
-    @GetMapping("/slow-10")
+    @GetMapping("/slow-3")
     public String slowApi10() throws InterruptedException {
         Thread.sleep(10000);
-        return "slow-10-second";
+        return "slow-2-second";
     }
 
     @GetMapping("/runtime-excpetion")
