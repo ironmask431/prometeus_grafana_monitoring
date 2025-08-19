@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
+
 @RestController
 @RequestMapping("/test")
 public class TestController {
@@ -14,16 +16,20 @@ public class TestController {
         return "test";
     }
 
-    @GetMapping("/slow-2")
-    public String slowApi5() throws InterruptedException {
-        Thread.sleep(5000);
-        return "slow-1-second";
+    @GetMapping("/slow-api-1")
+    public String slowApi_1() throws InterruptedException {
+        Random random = new Random();
+        int randomNumber = random.nextInt(1001); // 0부터 1000까지 포함
+        Thread.sleep(randomNumber);
+        return "duration mills : "+randomNumber;
     }
 
-    @GetMapping("/slow-3")
-    public String slowApi10() throws InterruptedException {
-        Thread.sleep(10000);
-        return "slow-2-second";
+    @GetMapping("/slow-api-2")
+    public String slowApi_2() throws InterruptedException {
+        Random random = new Random();
+        int randomNumber = 1001 + random.nextInt(2000 - 1001 + 1); // 1001 ~ 2000 포함
+        Thread.sleep(randomNumber);
+        return "duration mills : "+randomNumber;
     }
 
     @GetMapping("/runtime-excpetion")
